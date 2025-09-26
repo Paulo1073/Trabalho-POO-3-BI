@@ -16,12 +16,10 @@ class UserController extends Controller
         return view('users', ['users' => $users]); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('user_create');
     }
 
     /**
@@ -29,17 +27,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $create = User::create([
+            'name'=> $request -> input('name'),
+            'email'=>$request -> input('email'),
+            'password'=> password_hash( $request -> input('password'), PASSWORD_DEFAULT)
+        ]);
+        if ($create) {
+            return redirect()->route('users.index')->with('message', 'Cadastrado com Sucesso');
+        } else {
+            return redirect()->back()->with('message', 'Erro no Cadastro');
+        }
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+    {   $user = User::findOrFail($id);
+        return view('user_show', ['user' => $user]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -69,8 +76,14 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy(string $id){
+        $user = User::findOrFail($id);
+        $delete = $user->delete();
+
+        if ($delete) {
+            return redirect()->route('users.index')->with('message', 'Deletado com Sucesso');
+        } else {
+            return redirect()->back()->with('message', 'Erro ao Deletar');
+        }
     }
 }
