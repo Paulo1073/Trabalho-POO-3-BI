@@ -1,0 +1,87 @@
+/* --- Estilos para Formulários --- */
+
+form {
+    background-color: #1a202c;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px; /* Limita a largura do formulário */
+    box-shadow: 0 4px 10px rgba(159, 122, 234, 0.1);
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #a0aec0; /* Cinza mais claro */
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 5px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+input:focus {
+    outline: none;
+    border-color: #9f7aea; /* Roxo no foco */
+    box-shadow: 0 0 0 2px rgba(159, 122, 234, 0.4);
+}
+
+button[type="submit"],
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #805ad5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #6b46c1;
+}
+
+.btn-return {
+    display: inline-block;
+    text-align: center;
+    margin-top: 15px;
+    color: #9f7aea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-return:hover {
+    text-decoration: underline;
+}
+
+/* Container para ações (botões de submit, voltar, etc) */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 20px;
+}
+
+.form-actions button,
+.form-actions .btn {
+    width: auto; /* Largura automática para os botões dentro de .form-actions */
+    padding: 12px 25px;
+}
